@@ -3,7 +3,7 @@ import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 
-const App = (props)  => {
+const App = ()  => {
   const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([
     {
@@ -43,7 +43,9 @@ const toggleReminder = (id) => {
 
   return (
     <div className="container">
-      <Header onAdd={() => setShowAddTask(!showAddTask)} />
+      <Header 
+      onAdd={() => setShowAddTask(!showAddTask)} 
+      showAdd={showAddTask}/>
       {/* && is a shorter form of a ternary. this says to show the add task form if showAddTask is true */}
       {showAddTask && <AddTask onAdd={addTask}/>}
      {tasks.length > 0 ? <Tasks 
